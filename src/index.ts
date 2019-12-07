@@ -1,7 +1,7 @@
-import { ReferenceItem } from "./class";
-
+import { ReferenceItem, Encyclopedia } from "./class";
 // press f5 to build
-/**----------class----------  */
+
+/**----------creating and using classes----------  */
 let ref: ReferenceItem = new ReferenceItem("Update Facts and Figures", 2019);
 ref.printItem();
 // invoked set publisher
@@ -9,6 +9,7 @@ ref.publisher = "Random Data Publishing";
 // invoked get publisher
 console.log(ref.publisher);
 
-/**----------subject----------  */
-/**----------subject----------  */
-/**----------subject----------  */
+/**----------extending classes----------  */
+let refBook = new Encyclopedia("World", 2013, 10);
+refBook.printItem(); // can assess year
+// refBook.year = 1900; got an error because year decare by protected

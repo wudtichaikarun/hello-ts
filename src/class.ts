@@ -16,12 +16,19 @@ class ReferenceItem {
 }
 */
 
+/**
+ * public can use and modify form out side
+ * private can't modify from out side
+ * static use in class only
+ * protected available in sub class, still not available publicly
+ */
+
 // short version
 class ReferenceItem {
   private _publisher: string;
   static department: string = "Research";
 
-  constructor(public title: string, private year: number) {}
+  constructor(public title: string, protected year: number) {}
 
   printItem(): void {
     console.log(`${this.title} was published in ${this.year}.`);
@@ -37,4 +44,17 @@ class ReferenceItem {
   }
 }
 
-export { ReferenceItem };
+class Encyclopedia extends ReferenceItem {
+  constructor(newTitle: string, newYear: number, public edition: number) {
+    // init value to class ReferenceItem
+    super(newTitle, newYear);
+  }
+
+  // override method get all feature from parent method and extend feature
+  printItem(): void {
+    super.printItem();
+    console.log(`Edition: ${this.edition} (${this.year})`);
+  }
+}
+
+export { ReferenceItem, Encyclopedia };
