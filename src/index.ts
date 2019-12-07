@@ -18,5 +18,5 @@ export async function addNumbers(a: number, b: number) {
 
 //== Run the program ==//
 (async () => {
-  console.log("hello", await addNumbers(3, 4));
+  console.log(await addNumbers(3, 4));
 })();

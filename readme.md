@@ -60,7 +60,13 @@ Folders tree
 
 ---
 
-Type information
+## [x] compile in "watch mode"
+
+In the terminal run `tsc --watch`
+
+---
+
+## [x] compile with declaration file output
 
 1. add `"declaration": true` and `"sourceMap": true` to file tsconfig.json
 
@@ -92,3 +98,6 @@ Folder tree
 │   └── index.ts
 └── tsconfig.json
 ```
+
+- declaration use for type show information
+- sourceMap use for if you put break points in your code, it's what would, in your debugger, map that break point back to the original Typescript source.
