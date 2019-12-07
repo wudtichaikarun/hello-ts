@@ -1,15 +1,24 @@
-import { ReferenceItem, Encyclopedia } from "./class";
+import { ReferenceItem } from "./class";
 // press f5 to build
 
-/**----------creating and using classes----------  */
-let ref: ReferenceItem = new ReferenceItem("Update Facts and Figures", 2019);
-ref.printItem();
-// invoked set publisher
-ref.publisher = "Random Data Publishing";
-// invoked get publisher
-console.log(ref.publisher);
+/**----------using class expressions ----------  */
+let Newspaper = class extends ReferenceItem {
+  printCitation(): void {
+    console.log(`Newspaper: ${this.year}`);
+  }
+};
+let myPaper = new Newspaper("The Gazette", 2016);
+myPaper.printCitation();
 
-/**----------extending classes----------  */
-let refBook = new Encyclopedia("World", 2013, 10);
-refBook.printItem(); // can assess year
-// refBook.year = 1900; got an error because year decare by protected
+class Novel extends class {
+  title: string;
+} {
+  mainCharacter: string;
+}
+
+let favoriteNovel = new Novel();
+/**
+ * favoriteNovel.  editor will auto suggest .title, .mainCharacter
+ */
+favoriteNovel.title = "Romantic";
+console.log(favoriteNovel.title);
