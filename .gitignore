@@ -132,4 +132,4 @@ dist
 .tern-port
 
 # lib
-/lib
+lib/
