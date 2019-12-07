@@ -1,15 +1,17 @@
 import { ReferenceItem, Encyclopedia } from "./class";
 // press f5 to build
 
-/**----------creating and using classes----------  */
-let ref: ReferenceItem = new ReferenceItem("Update Facts and Figures", 2019);
-ref.printItem();
-// invoked set publisher
-ref.publisher = "Random Data Publishing";
-// invoked get publisher
-console.log(ref.publisher);
+/**
+ * Abstract classes
+ * - created with the `abstract` keyword
+ * - base classes that may not be instantiated
+ * - may contain implementation details
+ * - abstract method are not implemented
+ */
+
+/**----------not be instantiated ----------  */
+// let ref: ReferenceItem = new ReferenceItem("Update Facts and Figures", 2019); // got error
 
 /**----------extending classes----------  */
-let refBook = new Encyclopedia("World", 2013, 10);
-refBook.printItem(); // can assess year
-// refBook.year = 1900; got an error because year decare by protected
+let refBook: ReferenceItem = new Encyclopedia("World", 2013, 10);
+refBook.printCitation();
