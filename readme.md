@@ -1,103 +1,32 @@
-# `tsc` examples
+# Compiler options and project configuration
 
-## TODO
-
-- [ ] compile with `lib` as the output directory
-- [ ] compile in "watch mode"
-- [ ] compile with declaration file output
-- [ ] compile to ES2015 vs commonjs modules
-- [ ] use a `tsconfig.json`
-  - [ ] source maps
-  - [ ] declaration maps
-  - [ ] module target (`es3` vs `es5` vs `es2017`)
+- Complier options
+  - common options
+  - discovering available options
+- Creating project with tsconfig.json
+  - specifying compiler options
+  - list files to include or exclude
 
 ---
 
-## [x] compile with `lib` as the output directory
+## Specifying compiler options
 
-1. In root directory create file tsconfig.json
+- command line (tsc)
+- options inside an IDE
+- build tasks
+- inside tsconfig.json file
 
-```JSON
-{
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2017",
-    "outDir": "lib"
-  },
-  "include": ["src"]
-}
-```
+> common compiler options [Document-link](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 
-`"include": ["src"]` -> convert file **.ts to **.js all file in folder src.
+- `--module` or `--m`
+- `--moduleResolution`
+- `--target` or `--t`
+- `--watch` or `--w`
+- `--outDir`
+- `--noImplicitAny`
 
-`"outDir": "lib"` -> create folder name lib and store all the files converted in there.
+In terminal type
 
-Folders tree
+`tsc --t ES5 --outDir js --m commonjs --sourceMap src/index.ts`
 
-```
-.
-├── readme.md
-├── src
-│   └── index.ts
-└── tsconfig.json
-```
-
----
-
-2. In terminal run `tsc`
-
-Folders tree
-
-```
-.
-├── lib
-│   └── index.js
-├── readme.md
-├── src
-│   └── index.ts
-└── tsconfig.json
-```
-
----
-
-## [x] compile in "watch mode"
-
-In the terminal run `tsc --watch`
-
----
-
-## [x] compile with declaration file output
-
-1. add `"declaration": true` and `"sourceMap": true` to file tsconfig.json
-
-```JSON
-{
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2017",
-    "outDir": "lib",
-    "declaration": true,
-    "sourceMap": true
-  },
-  "include": ["src"]
-}
-```
-
-2. run command `tsc` in terminal
-
-Folder tree
-
-```
-.
-├── lib
-│   ├── index.d.ts  // <--------- declaration
-│   ├── index.js
-│   └── index.js.map  // <---------- sourceMap
-├── readme.md
-├── src
-│   └── index.ts
-└── tsconfig.json
-```
-
-- declaration use for type show information
-- sourceMap use for if you put break points in your code, it's what would, in your debugger, map that break point back to the original Typescript source.
+or `tsc --t ES5 --outDir js --m commonjs --sourceMap src/index.ts --watch` for watch mode
