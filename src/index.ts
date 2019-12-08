@@ -66,3 +66,49 @@ let otherContactInfo: HasEmail & HasPhoneNumber = {
   email: "Mike@mail.com",
   phone: 233445566
 };
+
+/**
+ * Function
+ */
+function sendEmail(to: HasEmail): { recipient: string; body: string } {
+  return {
+    recipient: `${to.name} <${to.email}>`,
+    body: "You're pre-qualified for a loan!"
+  };
+}
+// arrow-function variant
+const sendTextMessage = (
+  to: HasPhoneNumber
+): { recipient: string; body: string } => {
+  return {
+    recipient: `${to.name} <${to.phone}>`,
+    body: "You're pre-qualified for a loan!"
+  };
+};
+
+/**
+ * Function Signature Overloading
+ */
+
+// provide multiple function signatures
+function contactPeople(method: "email", ...people: HasEmail[]): void;
+function contactPeople(method: "phone", ...people: HasPhoneNumber[]): void;
+
+// function implementation
+function contactPeople(
+  method: "email" | "phone",
+  ...people: (HasPhoneNumber | HasEmail)[]
+): void {
+  if (method === "email") {
+    (people as HasEmail[]).forEach(sendEmail);
+  }
+  if (method === "phone") {
+    (people as HasPhoneNumber[]).forEach(sendTextMessage);
+  }
+}
+// email works
+contactPeople("email", { name: "Ro A", email: "Ro@ro.com" });
+// phone works
+contactPeople("phone", { name: "Ro A", phone: 1234567 });
+// mixing does not work
+// contactPeople("phone", { name: "Ro A", email: "Ro@ro.com" });
