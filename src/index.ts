@@ -112,3 +112,8 @@ contactPeople("email", { name: "Ro A", email: "Ro@ro.com" });
 contactPeople("phone", { name: "Ro A", phone: 1234567 });
 // mixing does not work
 // contactPeople("phone", { name: "Ro A", email: "Ro@ro.com" });
+
+/**
+ * Lexical scope
+ * - Lexical scope just mean, what is the value of `this` when you invoke a function
+ */
