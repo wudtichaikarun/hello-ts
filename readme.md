@@ -1,4 +1,4 @@
-# Typescript Basics
+# [Typescript Basics](https://frontendmasters.com/courses/typescript-v2/)
 
 - variable declarations
 - Array & Tuples
