@@ -29,41 +29,48 @@ let inventory: Array<Book> = [
     title: "A Farewell to Arms",
     author: "Ernest Hemingway",
     available: false
+  },
+  {
+    id: 3,
+    title: "Code Complete",
+    author: "Romantic",
+    available: true
   }
 ];
 
 // let purgedBooks: Array<Book> = Purge<Book>(inventory);
-let purgedBooks: Array<Book> = Purge(inventory); // signature same as above
-purgedBooks.forEach(book => console.log(book.title));
+// let purgedBooks: Array<Book> = Purge(inventory); // signature same as above
+// purgedBooks.forEach(book => console.log(book.title));
 
-let purgedNumber: Array<number> = Purge<number>([1, 2, 3, 4]);
-console.log(purgedNumber);
+// let purgedNumber: Array<number> = Purge<number>([1, 2, 3, 4]);
+// console.log(purgedNumber);
 
 // Generic interfaces
-let bookInventory: Inventory<Book> = {
-  getAllItems: () => inventory
-};
-let allBooks: Array<Book> = bookInventory.getAllItems();
-console.log(allBooks);
+// let bookInventory: Inventory<Book> = {
+//   getAllItems: () => inventory
+// };
+// let allBooks: Array<Book> = bookInventory.getAllItems();
+// console.log(allBooks);
 
 // Generic Classes
-class Catalog<T> implements Inventory<T> {
-  private catalogItems = new Array<T>();
-  addItem(newItem: T) {
-    this.catalogItems.push(newItem);
-  }
-  // implement other interface methods ...
-  getAllItems() {
-    return this.catalogItems;
-  }
-}
+// class Catalog<T> implements Inventory<T> {
+//   private catalogItems = new Array<T>();
+//   addItem(newItem: T) {
+//     this.catalogItems.push(newItem);
+//   }
+//   // implement other interface methods ...
+//   getAllItems() {
+//     return this.catalogItems;
+//   }
+// }
 
-let bookCatalog = new Catalog<Book>();
+// let bookCatalog = new Catalog<Book>();
 
 // Demo Creating and Using Generic work with type Book
 let bookShelf: Shelf<Book> = new Shelf<Book>();
 inventory.forEach(book => bookShelf.add(book));
 let firstBook: Book = bookShelf.getFirst();
+bookShelf.printTitles();
 // console.log(firstBook);
 
 // Demo Creating and Using Generic work with type Magazine
@@ -82,6 +89,14 @@ magazines.forEach(mag => magazineShelf.add(mag));
 let firstMagazine: Magazine = magazineShelf.getFirst();
 
 // Demo Creating and Using Generic work with type number
-let numberShelf: Shelf<number> = new Shelf<number>();
-[2, 3, 5, 6].forEach(num => numberShelf.add(num));
-let firstNumber: number = numberShelf.getFirst();
+// error because type must contain properties title
+// let numberShelf: Shelf<number> = new Shelf<number>();
+// [2, 3, 5, 6].forEach(num => numberShelf.add(num));
+// let firstNumber: number = numberShelf.getFirst();
+
+/**
+ * Generic Constraints
+ * - describe types that may be passed as a generic parameter 'extends' keyword applies constraint
+ */
+let softwareBook = bookShelf.find("Code Complete");
+console.log(`${softwareBook.title} (${softwareBook.author})`);
