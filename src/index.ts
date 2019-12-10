@@ -204,10 +204,3 @@ const xxxx: NumVal = [1, 2, 3];
  * Type test module name `json-types`
  * - link https://frontendmasters.com/courses/typescript-v2/type-tests/
  */
-
-/**
- * Classes  Access modifier keywords - `who can access this thing`
- * - public - everyone
- * - protected - me and subclasses
- * - private - only me
- */
